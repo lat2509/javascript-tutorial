@@ -6,6 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="bài1.js"></script>
+    <script type="module">
+        import {hello} from "./hello.js"
+        import caculate from "./hello.js"
+        const userChild = {
+            name: "John JR",
+            age:22,
+            address : {
+                street: "18m",
+                district: "Ha Dong",
+                provine: "Ha Noi"
+            }
+        }
+        hello(userChild);
+        console.log(caculate(2,4));
+    </script>
 </body>
 </html>
