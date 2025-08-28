@@ -7,12 +7,12 @@ let personProto = {
 
 let john = Object.create(personProto);
 john.name="john";
-console.log(john.greet);
+console.log(john.greet());
 let mary={};
 Object.setPrototypeOf(mary,john);
 
 mary.name= "Mary";
-console.log(mary.greet);
+console.log(mary.greet());
 
 function inheristFrom(obj,proto){
     return (Object.getPrototypeOf(obj)=== proto);
