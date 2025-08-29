@@ -14,7 +14,7 @@ function validateEmail() {
 
     if (email.value === '') {
         emailError.innerText = 'Vui lòng nhập Email';
-        email.classList.add('error-massage');
+        // email.classList.add('error-massage');
         return false;
     } 
     if (!regex.test(email.value)) {
