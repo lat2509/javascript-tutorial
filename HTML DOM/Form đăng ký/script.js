@@ -14,43 +14,47 @@ function validateEmail() {
 
     if (email.value === '') {
         emailError.innerText = 'Vui lòng nhập Email';
-        emailError.classList.add('error-massage');
+        email.classList.add('error-massage');
         return false;
     } 
     if (!regex.test(email.value)) {
         emailError.innerText = 'Sai định dạng email';
-        emailError.classList.add('error-massage');
+        email.classList.add('error-massage');
+        emailError.style.color = 'red';
         return false;
     }
     emailError.innerText = '';
-    emailError.classList.remove('error-massage');
+    email.classList.remove('error-massage');
     return true;
 }
 
 function validatePassword() {
     if (password.value === '') {
         passwordError.innerText = 'Vui lòng nhập mật khẩu';
-        passwordError.classList.add('error-massage');
+        password.classList.add('error-massage');
+        passwordError.style.color='red';
         return false;
     } 
     if (password.value.length < 6) {
         passwordError.innerText = 'Mật khẩu cần ít nhất 6 kí tự';
-        passwordError.classList.add('error-massage');
+        password.classList.add('error-massage');
+        passwordError.style.color='red';
         return false;
     }
     passwordError.innerText = '';
-    passwordError.classList.remove('error-massage');
+    password.classList.remove('error-massage');
     return true;
 }
 
 function validateConfirmPassword() {
     if (confirmPassword.value === '' || confirmPassword.value !== password.value) {
         confirmPasswordError.innerText = 'Mật khẩu không khớp';
-        confirmPasswordError.classList.add('error-massage');
+        confirmPassword.classList.add('error-massage');
+        confirmPasswordError.style.color = 'red';
         return false;
     }
     confirmPasswordError.innerText = '';
-    confirmPasswordError.classList.remove('error-massage');
+    confirmPassword.classList.remove('error-massage');
     return true;
 }
 

@@ -1,7 +1,6 @@
-.error-massage{
-    color: red;
-    border: 2px solid black;
-    width:169px;
-    padding:1px 2px;
-    margin: 2px 0px;
+.error-massage,
+.error-massage:hover{
+    border: 2px solid red;
+    background-color: rgb(232, 147, 147);
+    border-radius: 2%;
 }
