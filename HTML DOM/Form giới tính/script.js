@@ -6,7 +6,9 @@ let gender= document.querySelector("input[name='gender']:checked");
 
 let notice = document.getElementById('notice');
 
-submitBtn.addEventListener('click',function(){
+submitBtn.addEventListener('click',showInfo)
+
+function showInfo(){
     if (boy.checked){
         alert (`Xin chào ${userName.value}, giới tính:${boy.value}`);
     }else if (girl.checked){
@@ -17,4 +19,4 @@ submitBtn.addEventListener('click',function(){
         notice.innerText = 'Vui lòng chọn giới tính';
         notice.style.color = 'red';
     }
-})
+}
