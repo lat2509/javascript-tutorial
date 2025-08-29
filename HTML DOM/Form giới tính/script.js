@@ -13,7 +13,6 @@ function showInfo(){
         alert (`Xin chào ${userName.value}, giới tính:${boy.value}`);
     }else if (girl.checked){
         alert (`Xin chào ${userName.value}, giới tính:${girl.value}`);
-
     }
     else{
         notice.innerText = 'Vui lòng chọn giới tính';
