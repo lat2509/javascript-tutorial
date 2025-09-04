@@ -58,10 +58,10 @@ function validateConfirmPassword() {
     return true;
 }
 
-email.addEventListener('input', validateEmail);
-confirmPassword.addEventListener('input', validateConfirmPassword);
+email.addEventListener('blur', validateEmail);
+confirmPassword.addEventListener('blur', validateConfirmPassword);
 
-password.addEventListener('input', () => {
+password.addEventListener('blur', () => {
     validatePassword();
     validateConfirmPassword(); 
 });

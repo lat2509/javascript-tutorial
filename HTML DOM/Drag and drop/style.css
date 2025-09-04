@@ -1,0 +1,26 @@
+.Item{
+    border: 2px solid black;
+    width: 50px;
+    margin: 5px;
+    text-align: center;
+}
+
+.container{
+    width: 50vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-items: center;
+    background-color: antiquewhite;
+    border: 2px solid black;
+}
+
+#Save{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.container ul{
+    padding: 0;
+}

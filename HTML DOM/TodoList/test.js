@@ -5,20 +5,22 @@ let deleteBtn = document.getElementsByClassName('deleteBtn');
 let notice = document.getElementById('notice');
 let checkbox = document.querySelectorAll("input[type=checkbox]");
 
+function getTask(){
+    return JSON.parse(localStorage.getItem('tasks'))|| [];
+}
 
-addBtn.addEventListener('click',addtask);
-
+function setTask(tasks){
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 
 function addtask(){
     if(todotask.value!==''){
         notice.innerText = '';
 
-        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        // Thêm task mới
+        let tasks = getTask();
         tasks.push({text:todotask.value,completed:false});
-        // Lưu lại
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-        renderTask({text:todotask.value,completed:false});
+        setTask(tasks);
+        renderTask({text:todotask.value});
         todotask.value="";
     }
     else{
@@ -45,47 +47,57 @@ function renderTask(tasks){
         tasklist.appendChild(newtask);
 }
 
-tasklist.addEventListener('click', function(e){
-    if (e.target.classList.contains('deleteBtn')) {
-        e.target.parentElement.remove();
-    }
-});
+function deleteTask(task,text){
+    task = task.filter(t => t.text !== text);
+    setTask(task);
+}
+
+function completedTast(task,text,e){
+    task = task.map(t=>{
+        if(t.text === text){
+            t.completed = e.target.checked;
+        }
+        return t;
+    });
+    setTask(task);
+}
+
+addBtn.addEventListener('click',addtask);
 
 tasklist.addEventListener('change', function (e) {
     if (e.target.type === 'checkbox') {
         let li = e.target.parentElement;
         let text = li.childNodes[1].textContent.trim();
-
-        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-
-        tasks = tasks.map(t => {
-            if (t.text === text) {
-                t.completed = e.target.checked;
-            }
-            return t;
+        let tasks = getTask();
+        tasks= tasks.map(t=>{
+        if(t.text === text){
+            t.completed = e.target.checked;
+        }
+        return t;
         });
-
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-
-        li.style.textDecoration = e.target.checked ? 'line-through' : 'none';
+        setTask(tasks);
+        if (e.target.checked){
+            li.style.textDecoration = 'line-through';
+        }
+        else{
+            li.style.textDecoration = 'none';
+        }
     }
 });
 
 tasklist.addEventListener('click',function(e){
     if (e.target.classList.contains('deleteBtn')) {
-        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        let tasks = getTask();
         let li = e.target.parentElement;
         let text = li.childNodes[1].textContent.trim();
-        tasks = tasks.filter(t => t.text !== text);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-
+        deleteTask(tasks,text);
         e.target.parentElement.remove();
     }
 });
 
 
 window.onload = function(){
-    let tasks= JSON.parse(localStorage.getItem('tasks'));
+    let tasks= getTask();
     tasks.forEach(element => {
         renderTask(element);
     });
