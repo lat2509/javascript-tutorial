@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchAPI(url) {
         try {
             const res = await fetch(url);
+            if (!res.ok) throw new Error ('error');
             return await res.json();
         } catch (err) {
             console.error("Fetch API error:", err);
