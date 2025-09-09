@@ -2,7 +2,7 @@ const descriptions = document.getElementById('description');
 
 const saveState = _.debounce(() => {
     if (!history.state || history.state.descriptions !== descriptions.value) {
-        history.pushState({ descriptions: descriptions.value }, '');
+        history.pushState({ descriptions: descriptions.value }, '',);
     }
 }, 5000);
 
